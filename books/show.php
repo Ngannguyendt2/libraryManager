@@ -1,5 +1,5 @@
 <?php
-include "../database/DBconect.php";
+include "../database/DBconnect.php";
 include "../class/Books.php";
 include "../class/LibraryManager.php";
 $libraryManager = new LibraryManager();
@@ -51,8 +51,7 @@ foreach ($bookManager as $item) {
 </head>
 <body>
 <h1>Books</h1>
-
-<!--<h2><a href="add.php">Add</a></h2>-->
+<h2><a href="add.php">Add</a></h2>
 <table>
     <tr>
         <td><b>Code</b></td>

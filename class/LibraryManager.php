@@ -7,7 +7,7 @@ class LibraryManager
 
     public function __construct()
     {
-        $db = new DBconect();
+        $db = new DBconnect();
         $this->conn = $db->connect();
 
     }
@@ -22,17 +22,19 @@ class LibraryManager
 
     public function insert($table, $data)
     {
-
+        $fields =[];
+        $placeholders=[];
         foreach ($data as $key => $value) {
-            $fields[] = $this->backtick($key);
-            $placeholders[] = '?';
-        }
+           array_push($fields,$this->backtick($key));
+            array_push($placeholders,'?');
 
+        }
         $fields = implode(',', $fields);
         $placeholders = implode(',', $placeholders);
         $sql = "INSERT INTO $table ($fields) values ($placeholders)";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(array_values($data));
+        var_dump($stmt);
 
     }
 
@@ -46,23 +48,29 @@ class LibraryManager
         $sql = "DELETE FROM $table WHERE id=$id";
         $this->conn->exec($sql);
     }
-    public function update($table,$data,$id){
+
+    public function update($table, $data, $id)
+    {
+        $fields=[];
+        $placeholders=[];
         foreach ($data as $key => $value) {
-            $fields[] = $this->backtick($key);
-            $placeholders[] = $value;
+            array_push($fields,$this->backtick($key));
+            array_push($placeholders,$value);
         }
         $fields = implode(',', $fields);
         $placeholders = implode(',', $placeholders);
         $sql = "UPDATE $table  SET $fields='$placeholders' WHERE id=$id";
-        var_dump($sql);
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(array_values($data));
     }
-    public function join($table1,$table2,$condition){
-     $sql="SELECT * FROM $table1 INNER JOIN $table2 ON $condition";
-     $stmt=$this->conn->query($sql);
-     $stmt->setFetchMode(PDO::FETCH_ASSOC);
-     $result=$stmt->fetchAll();
+
+    public function join($sql)
+    {
+        // $sql="SELECT * FROM $table1 INNER JOIN $table2 ON $table1.author_id=$table2.id where id=$id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return $result;
     }
 
 }

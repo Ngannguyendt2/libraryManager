@@ -3,17 +3,17 @@
 
 class Books
 {
-private $id;
-private $code_book;
-private $name;
-private $publishingCompany;
-private $author_id;
-private $publishingYear;
-private $numOfEdit;
-private $price;
-private $img;
-private $category_id;
-private $status;
+    private $id;
+    private $code_book;
+    private $name;
+    private $publishingCompany;
+    private $author_id;
+    private $publishingYear;
+    private $numOfEdit;
+    private $price;
+    private $img;
+    private $category_id;
+    private $status;
 
     /**
      * @return mixed

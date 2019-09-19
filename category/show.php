@@ -1,5 +1,5 @@
 <?php
-include "../database/DBconect.php";
+include "../database/DBconnect.php";
 include "../class/Category.php";
 include "../class/LibraryManager.php";
 $libraryManager = new LibraryManager();
@@ -57,7 +57,7 @@ foreach ($arrayCategory as $item) {
         ?>
         <tr>
             <td><?php echo ++$key ?></td>
-            <td><?php echo $category->getCategory() ?></td>
+            <td><a href="detail.php?id=<?php echo $category->getId()?>"><?php echo $category->getCategory() ?></td>
             <td><a href="delete.php?id=<?php echo $category->getId() ?>"
                    onclick="return confirm('Are you sure want to delete?')">Delete</a></td>
             <td><a href="update.php?id=<?php echo $category->getId() ?>">Update</a></td>

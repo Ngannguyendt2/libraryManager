@@ -1,7 +1,7 @@
 <?php
 include "../class/Category.php";
 include "../class/LibraryManager.php";
-include "../database/DBconect.php";
+include "../database/DBconnect.php";
 $libraryManager = new LibraryManager();
 $category = new Category();
 ?>

@@ -1,7 +1,7 @@
 <?php
 include "../class/Authors.php";
 include "../class/LibraryManager.php";
-include "../database/DBconect.php";
+include "../database/DBconnect.php";
 $libraryManager = new LibraryManager();
 $author = new Authors();
 ?>

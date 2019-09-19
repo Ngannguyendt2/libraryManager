@@ -1,5 +1,5 @@
 <?php
-include "../database/DBconect.php";
+include "../database/DBconnect.php";
 include "../class/LibraryManager.php";
 include "../class/Authors.php";
 $authorManager=new LibraryManager();

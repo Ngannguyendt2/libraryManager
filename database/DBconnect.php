@@ -1,7 +1,7 @@
 <?php
 
 
-class DBconect
+class DBconnect
 {
 private $dsn;
 private $user;
